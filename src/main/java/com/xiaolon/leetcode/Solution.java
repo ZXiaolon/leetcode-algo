@@ -14,7 +14,7 @@
 package com.xiaolon.leetcode;
 
 import com.xiaolon.leetcode.tree.TreeNode;
-
+import com.xiaolon.leetcode.tree.TreeUtils;
 
 
 import java.time.temporal.ValueRange;
@@ -30,7 +30,7 @@ import java.util.stream.Stream;
 public class Solution {
     public static void main(String[] args) {
         Integer[] nodes=new Integer[]{3,9,20,null,null,15,7};
-        TreeNode root = TreeNode.getTreeFromLayer(nodes);
+        TreeNode root = TreeUtils.getTreeFromLayer(nodes);
         List<List<Integer>> ret = levelOrderBottom(root);
 
         for (List<Integer> ele:ret){
