@@ -30,25 +30,7 @@ public class TreeNode {
         this.right = right;
     }
 
-    /**
-     * 按层次遍历构建二叉树
-     * @return
-     */
-    public static TreeNode getTreeFromLayer(Integer[] nodes){
-        int n=nodes.length;
-        if(n==0) return null;
-        TreeNode[] treeNodes=new TreeNode[n];
-        for (int i = 0; i < n; i++) {
-            treeNodes[i]=nodes[i]==null?null:new TreeNode(nodes[i]);
-        }
-        for (int i = 0; i < n/2-1; i++) {
-            if(treeNodes[i]!=null){
-                treeNodes[i].left=treeNodes[2*i+1];
-                treeNodes[i].right=treeNodes[2*i+2];
-            }
-        }
-        return treeNodes[0];
-    }
+
 
 
 }
