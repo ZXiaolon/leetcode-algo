@@ -52,6 +52,21 @@ public class DPDemo {
 
 
     /**
+     * leetcode:1137 第N个泰伯那契数
+     * @param n
+     * @return
+     */
+    public int tribonacci(int n) {
+        // 第一种方法，递归
+        if(n == 0) return 0;
+        if(n == 1) return 1;
+        if(n == 2) return 1;
+
+        return tribonacci(n-1) + tribonacci(n-2)+tribonacci(n-3);
+    }
+
+
+    /**
      * 打家劫舍，leetcode：198
      * @param nums
      * @return
