@@ -1,6 +1,4 @@
 /*
- *   Copyright © 2018 重庆市信息通信咨询设计院有限公司版权所有.
- *
  *   项目名称：leetcode-algo
  *   文件名称：com.xiaolon.leetcode.linear.Solution
  *
