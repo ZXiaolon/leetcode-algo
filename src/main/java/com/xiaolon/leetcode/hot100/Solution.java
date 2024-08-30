@@ -34,7 +34,16 @@ public class Solution {
      * @return
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        return null;
+        // 1. 暴力解法：使用2个栈存储2个链表元素，并倒序访问；
+        //      或者使用一个map存储较短的链表
+        // 2. 双指针方法
+        if(headA == null || headB == null) return null;
+        ListNode pA=headA,pB=headB;
+        while(pA!=pB){
+            pA = pA==null?headB: pA.next;
+            pB = pB==null?headA: pB.next;
+        }
+        return pA;
     }
 
 
