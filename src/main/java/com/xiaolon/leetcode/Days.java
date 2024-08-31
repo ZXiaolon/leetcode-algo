@@ -14,4 +14,35 @@ import lombok.val;
  **/
 public class Days {
 
+    /**
+     * leetcode: 3127. 构造相同颜色的正方形
+     * @param grid
+     * @return
+     */
+    public boolean canMakeSquare(char[][] grid) {
+        // 1. 暴力解法，一次遍历gird矩阵。改变颜色，并判断周围颜色
+        // 2. 滑动窗口，创建2*2小窗口，并滑动。判断窗口内是否存在3个颜色相同方块；
+        int m = grid.length;
+        int n = grid[0].length;
+        char[] temp = new char[4];
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                temp[0] = grid[i][j];
+                temp[1] = grid[i][j-1];
+                temp[2] = grid[i-1][j];
+                temp[3] = grid[i-1][j-1];
+                // 若包含3个相同字符，则返回true
+                int count1=0;
+                int count2=0;
+                for (char c : temp) {
+                    if('B' == c)count1++;
+                    else count2++;
+                }
+                System.out.println("count1: "+count1+" count2: "+count2);
+                if(Math.max(count1,count2)>=3) return true;
+
+            }
+        }
+        return false;
+    }
 }
