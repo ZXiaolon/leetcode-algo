@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +23,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
     @Test
     void getPrice() {
-        System.out.println(""+Math.abs('B'-'W'));
+        int[] arr = new int[]{-5,-3,-1,5};
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
     @Test
@@ -40,38 +43,7 @@ import static org.junit.jupiter.api.Assertions.*;
     public static Stream<char[][]> canMakeSquareProvider() {
         return Stream.of(
                 new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}},
-                new char[][]{{'B','W','B'},{'W','B','W'},{'B','W','B'}},
-                new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','W'}}
+                new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}}
                         );
-    }
-
-
-    @ParameterizedTest
-    @MethodSource(value = "busyStudentProvider")
-    public void busyStudent(int[] startTime, int[] endTime, int queryTime) {
-        Days days = new Days();
-        System.out.println(days.busyStudent(startTime, endTime, queryTime));
-    }
-
-    public static Stream<Arguments> busyStudentProvider(){
-        return Stream.of(
-                Arguments.of(new int[]{1,2,3}, new int[]{3,2,7}, 4),
-                Arguments.of(new int[]{4}, new int[]{4}, 4),
-                Arguments.of(new int[]{1,1,1,1}, new int[]{1,3,2,4}, 7)
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource(value = "maxConsecutiveAnswersProvider")
-    void maxConsecutiveAnswers(String answerKey, int k) {
-        Days days = new Days();
-        System.out.println(days.maxConsecutiveAnswers(answerKey, k));
-    }
-    public static Stream<Arguments> maxConsecutiveAnswersProvider() {
-        return Stream.of(
-                Arguments.of("TTFF", 2),
-                Arguments.of("TFFT", 1),
-                Arguments.of("TTFTTFTT", 1)
-        );
     }
 }

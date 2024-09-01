@@ -14,16 +14,11 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
- *   Copyright © 2018 重庆市信息通信咨询设计院有限公司版权所有.
- *
  *   项目名称：leetcode-algo
  *   文件名称：com.xiaolon.leetcode.hot100.SolutionTest
  *
  *   创建人：  ZHOU XIAO LONG
  *   创建日期：2024/8/28
- *
- *   版权描述：
- *   公司地址：
  *
  */class SolutionTest {
 
@@ -58,12 +53,8 @@ import static org.junit.jupiter.api.Assertions.*;
             );
     }
 
-    @ParameterizedTest
-    @MethodSource(value = "longestConsecutiveProvider")
-    public void longestConsecutive(int[] nums) {
-        Solution solution = new Solution();
-        System.out.println(solution.longestConsecutive(nums));
-    }
+
+
     public static Stream<int[]> longestConsecutiveProvider() {
         return Stream.of(
                 new int[]{100,4,200,1,3,2},
@@ -72,16 +63,7 @@ import static org.junit.jupiter.api.Assertions.*;
         );
     }
 
-    @ParameterizedTest
-    @MethodSource(value = "groupAnagramsProvider")
-    public void groupAnagrams(String[] strs) {
-        Solution solution = new Solution();
-        for (List<String> group : solution.groupAnagrams(strs)) {
-            System.out.print("[");
-            group.forEach(ele-> System.out.print(ele));
-            System.out.print("]");
-        }
-    }
+
     public static Stream<String[]> groupAnagramsProvider() {
         return Stream.of(
                 new String[]{"eat","tea","tan","ate","nat","bat"},

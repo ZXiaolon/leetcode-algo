@@ -14,6 +14,34 @@ import lombok.val;
  **/
 public class Days {
 
+
+    /**
+     * leetcode 2708 一个小组的最大实力值
+     * @param nums
+     * @return
+     */
+    public long maxStrength(int[] nums) {
+        return 0l;
+    }
+
+    /**
+     * leetcode 1450. 在既定时间做作业的学生人数
+     * @param startTime
+     * @param endTime
+     * @param queryTime
+     * @return
+     */
+    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        int count = 0;
+        int n = startTime.length;
+        for (int i = 0; i < n; i++) {
+            if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     /**
      * leetcode 2024 考试的最大困扰度
      * @param answerKey
@@ -44,24 +72,6 @@ public class Days {
             ans = Math.max(ans, right-left+1);
         }
         return ans;
-    }
-
-    /**
-     * leetcode 1450. 在既定时间做作业的学生人数
-     * @param startTime
-     * @param endTime
-     * @param queryTime
-     * @return
-     */
-    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
-        int count = 0;
-        int n = startTime.length;
-        for (int i = 0; i < n; i++) {
-            if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
-                count++;
-            }
-        }
-        return count;
     }
 
     /**
