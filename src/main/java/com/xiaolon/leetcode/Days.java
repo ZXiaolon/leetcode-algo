@@ -13,6 +13,23 @@ import lombok.val;
  * 类描述： Days
  **/
 public class Days {
+    /**
+     * leetcode 1450. 在既定时间做作业的学生人数
+     * @param startTime
+     * @param endTime
+     * @param queryTime
+     * @return
+     */
+    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        int count = 0;
+        int n = startTime.length;
+        for (int i = 0; i < n; i++) {
+            if (startTime[i] <= queryTime && endTime[i] >= queryTime) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     /**
      * leetcode: 3127. 构造相同颜色的正方形
@@ -32,14 +49,12 @@ public class Days {
                 temp[2] = grid[i-1][j];
                 temp[3] = grid[i-1][j-1];
                 // 若包含3个相同字符，则返回true
-                int count1=0;
-                int count2=0;
+
+                int count=0;
                 for (char c : temp) {
-                    if('B' == c)count1++;
-                    else count2++;
+                    count += (c&1);
                 }
-                System.out.println("count1: "+count1+" count2: "+count2);
-                if(Math.max(count1,count2)>=3) return true;
+                if(count!=2) return true;
 
             }
         }

@@ -9,12 +9,42 @@
 package com.xiaolon.leetcode.hot100;
 
 
+import lombok.val;
+
+import javax.swing.plaf.metal.MetalIconFactory;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 类描述： Solution
  **/
 public class Solution {
+
+    /**
+     * leetcode 128. 最长连续序列
+     * @param nums
+     * @return
+     */
+    public int longestConsecutive(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        Set<Integer> num_set = Arrays.stream(nums).boxed().collect(Collectors.toCollection(HashSet::new));
+
+
+        int ans=0;
+        for (Integer i : num_set) {
+            if(!num_set.contains(i-1)) {
+                int currentNum = i;
+                int currentLong = 1;
+
+                while(num_set.contains(currentNum+1)) {
+                    currentNum+=1;
+                    currentLong+=1;
+                }
+                ans = Math.max(ans, currentLong);
+            }
+        }
+        return ans;
+    }
 
     /**
      * leetcode 322. 零钱兑换
@@ -44,7 +74,9 @@ public class Solution {
      * @return
      */
     public TreeNode sortedArrayToBST(int[] nums) {
+
         return null;
+
     }
     /**
      * leetcode 160 相交链表

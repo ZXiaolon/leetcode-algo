@@ -3,6 +3,7 @@ package com.xiaolon.leetcode;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -38,7 +39,25 @@ import static org.junit.jupiter.api.Assertions.*;
     public static Stream<char[][]> canMakeSquareProvider() {
         return Stream.of(
                 new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}},
-                new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}}
+                new char[][]{{'B','W','B'},{'W','B','W'},{'B','W','B'}},
+                new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','W'}}
                         );
     }
+
+
+    @ParameterizedTest
+    @MethodSource(value = "busyStudentProvider")
+    public void busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        Days days = new Days();
+        System.out.println(days.busyStudent(startTime, endTime, queryTime));
+    }
+
+    public static Stream<Arguments> busyStudentProvider(){
+        return Stream.of(
+                Arguments.of(new int[]{1,2,3}, new int[]{3,2,7}, 4),
+                Arguments.of(new int[]{4}, new int[]{4}, 4),
+                Arguments.of(new int[]{1,1,1,1}, new int[]{1,3,2,4}, 7)
+        );
+    }
+
 }
