@@ -21,6 +21,33 @@ import java.util.stream.Collectors;
 public class Solution {
 
     /**
+     * leetcode 49 字母异位词 分组
+     * @param strs
+     * @return
+     */
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+
+            List<String> list = map.getOrDefault(key, new ArrayList<>());
+            list.add(str);
+            map.put(key, list);
+
+        }
+        List<List<String>> ans = new ArrayList<>();
+
+        for (List<String> value : map.values()) {
+            ans.add(value);
+        }
+        return ans;
+    }
+
+
+
+    /**
      * leetcode 128. 最长连续序列
      * @param nums
      * @return

@@ -13,6 +13,39 @@ import lombok.val;
  * 类描述： Days
  **/
 public class Days {
+
+    /**
+     * leetcode 2024 考试的最大困扰度
+     * @param answerKey
+     * @param k
+     * @return
+     */
+    public int maxConsecutiveAnswers(String answerKey, int k) {
+        // 正确解法1：滑动窗口
+        // 正确解法2：双指针，创建2个变量分别记录T与F的个数，区间类2个char的数量不能都超过k
+        return Math.max(maxConsecutiveChar(answerKey, k, 'T'), maxConsecutiveChar(answerKey, k, 'F'));
+    }
+
+    /**
+     * 滑动窗口求解最长连续字串
+     * @param answerKey
+     * @param k
+     * @param ch
+     * @return
+     */
+    public int maxConsecutiveChar(String answerKey, int k, char ch){
+        int ans=0;
+        int n=answerKey.length();
+        for (int left=0, right = 0, sum=0; right < n; right++) {
+            sum += answerKey.charAt(right) != ch ?1 : 0;
+            while(sum>k){
+                sum -= answerKey.charAt(left++) != ch ?1 :0;
+            }
+            ans = Math.max(ans, right-left+1);
+        }
+        return ans;
+    }
+
     /**
      * leetcode 1450. 在既定时间做作业的学生人数
      * @param startTime

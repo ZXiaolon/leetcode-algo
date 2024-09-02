@@ -1,5 +1,6 @@
 package com.xiaolon.leetcode;
 
+import com.xiaolon.leetcode.hot100.Solution;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -60,4 +61,17 @@ import static org.junit.jupiter.api.Assertions.*;
         );
     }
 
+    @ParameterizedTest
+    @MethodSource(value = "maxConsecutiveAnswersProvider")
+    void maxConsecutiveAnswers(String answerKey, int k) {
+        Days days = new Days();
+        System.out.println(days.maxConsecutiveAnswers(answerKey, k));
+    }
+    public static Stream<Arguments> maxConsecutiveAnswersProvider() {
+        return Stream.of(
+                Arguments.of("TTFF", 2),
+                Arguments.of("TFFT", 1),
+                Arguments.of("TTFTTFTT", 1)
+        );
+    }
 }
