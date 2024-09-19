@@ -7,13 +7,7 @@
  */
 package com.xiaolon.leetcode;
 
-
-
-
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.*;
 
 /**
  * 类描述： LeetCodeDemo
@@ -55,9 +49,5 @@ public class LeetCodeDemo {
         set.add(root.val);
         dfs(root.left);
         dfs(root.right);
-
     }
-
-
-
 }
