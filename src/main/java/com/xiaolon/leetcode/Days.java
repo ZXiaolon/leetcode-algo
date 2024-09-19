@@ -9,11 +9,32 @@ package com.xiaolon.leetcode;
 
 import lombok.val;
 
+import java.util.*;
+
 /**
  * 类描述： Days
  **/
 public class Days {
 
+    /**
+     * leetcode 2414  最长的字母序连续子字符串的长度
+     * @param s
+     * @return
+     */
+    public int longestContinuousSubstring(String s) {
+        int ans = 1;
+        int n = s.length();
+        int currLen = 1;
+        for (int i = 1; i < n; i++) {
+            if(s.charAt(i) - s.charAt(i - 1) == 1) {
+                currLen++;
+                ans = currLen > ans ? currLen: ans;
+            }else{
+                currLen = 1;
+            }
+        }
+        return ans;
+    }
 
     /**
      * leetcode 2708 一个小组的最大实力值
@@ -21,7 +42,26 @@ public class Days {
      * @return
      */
     public long maxStrength(int[] nums) {
-        return 0l;
+        long ans=1;
+        List<Integer> list = new ArrayList<>();
+
+        for (int num : nums) {
+            if(num>0) {
+                ans = ans==0? num : ans*num;
+            }
+            else if(num<0) list.add(num);
+
+        }
+        int n = list.size();
+        Collections.sort(list);
+
+        int i = 0;
+        while(n-i>=2){
+            ans*=list.get(i++);
+            ans*=list.get(i++);
+        }
+
+        return ans;
     }
 
     /**

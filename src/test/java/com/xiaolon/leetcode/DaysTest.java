@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -19,19 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
  *   创建人：  ZHOU XIAO LONG
  *   创建日期：2024/8/21
  *
- */class DaysTest {
-
-    @Test
-    void getPrice() {
-        int[] arr = new int[]{-5,-3,-1,5};
-        Arrays.sort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-    @Test
-    void findMaximumNumber() {
-
-    }
+ */
+class DaysTest {
 
     @ParameterizedTest
     @MethodSource(value = "canMakeSquareProvider")
@@ -45,5 +35,25 @@ import static org.junit.jupiter.api.Assertions.*;
                 new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}},
                 new char[][]{{'B','W','B'},{'B','W','W'},{'B','W','B'}}
                         );
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "maxStrengthProvider")
+    void maxStrength(int[] nums) {
+        Days days = new Days();
+        System.out.println(days.maxStrength(nums));
+    }
+    public static Stream<int[]> maxStrengthProvider() {
+        return Stream.of(
+                new int[]{3,-1,-5,2,5,-9},
+                new int[]{-4,-5,-4}
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = "abcde")
+    void longestContinuousSubstring(String s) {
+        Days days = new Days();
+        System.out.println(days.longestContinuousSubstring(s));
     }
 }
