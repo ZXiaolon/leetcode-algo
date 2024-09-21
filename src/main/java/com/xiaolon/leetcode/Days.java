@@ -6,12 +6,73 @@
  *   创建日期：2024/8/21
  */
 package com.xiaolon.leetcode;
+import java.net.Socket;
 import java.util.*;
 
 /**
  * 类描述： Days
  **/
 public class Days {
+
+    Map<Integer, Integer> memo = new HashMap<Integer, Integer>();
+
+    public int edgeScore(int[] edges) {
+        int n = edges.length;
+        long[] score = new long[n];
+        for (int i = 0; i < n; i++) {
+            int to = edges[i];
+            score[to] += i;
+        }
+
+        long maxScore = -1;
+        int loc = -1;
+
+        for (int i = 0; i < n; i++) {
+            if(score[i] > maxScore){
+                maxScore = score[i];
+                loc = i;
+            }
+        }
+
+        return loc;
+    }
+
+    /**
+     * leetcode 2376 统计特殊整数
+     * @param n
+     * @return
+     */
+    public int countSpecialNumbers(int n) {
+        // 解决思路：动态规划
+        String nStr = String.valueOf(n);
+        int res = 0;
+        int prod = 9;
+        for (int i = 0; i < nStr.length() - 1; i++) {
+            res += prod;
+            prod *= 9 - i;
+        }
+        res += dp(0, false, nStr);
+        return res;
+
+    }
+    public int dp(int mask, boolean prefixSmaller, String nStr) {
+        if (Integer.bitCount(mask) == nStr.length()) {
+            return 1;
+        }
+        int key = mask * 2 + (prefixSmaller ? 1 : 0);
+        if (!memo.containsKey(key)) {
+            int res = 0;
+            int lowerBound = mask == 0 ? 1 : 0;
+            int upperBound = prefixSmaller ? 9 : nStr.charAt(Integer.bitCount(mask)) - '0';
+            for (int i = lowerBound; i <= upperBound; i++) {
+                if (((mask >> i) & 1) == 0) {
+                    res += dp(mask | (1 << i), prefixSmaller || i < upperBound, nStr);
+                }
+            }
+            memo.put(key, res);
+        }
+        return memo.get(key);
+    }
 
     /**
      * leetcode 2414  最长的字母序连续子字符串的长度

@@ -1,6 +1,8 @@
 package com.xiaolon.leetcode;
 
 
+import lombok.val;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -50,5 +52,19 @@ class DaysTest {
     void longestContinuousSubstring(String s) {
         Days days = new Days();
         System.out.println(days.longestContinuousSubstring(s));
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "edgeScoreProvider")
+    void edgeScore(int[] deges) {
+        Days days = new Days();
+        System.out.println(days.edgeScore(deges));
+    }
+
+    public static Stream<int[]> edgeScoreProvider() {
+        return Stream.of(
+                new int[]{1,0,0,0,0,7,7,5},
+                new int[]{2,0,0,2}
+        );
     }
 }
